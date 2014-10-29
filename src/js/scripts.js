@@ -4,8 +4,8 @@ $(document).ready(function() {
 
 function getPixel(){
     var params = {},action = 'firepixel';
-    if(getUrlVars()["aff"]){ 
-        params.affiliate = getUrlVars()["affiliate"]
+    if(getUrlVars()["affiliate"]){ 
+        params.affiliate = getUrlVars()["affiliate"];
     }
     if($.cookie('billingInfo')){
         params.prospectID = JSON.parse($.cookie('billingInfo')).prospectID;

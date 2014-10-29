@@ -172,6 +172,23 @@ $required = $controller->GetModel('billingFormRequired');
 </div>	
 ```
 
+- FireAffiliatePixel code, just be sure to check that the pageId is pointing to the correct page number at the begining of every page:
+
+```
+<script>
+            var pageId = 1;
+</script>
+```
+
+with this pageId variable the template by itself is going to get the pixel's code based in the pageId, affiliate parameter(passed by url) and prospectId variables later it will add the code to the page.
+
+Here is the page id number corresponding to each page:
+ 1 - Landing
+ 2 - Billing
+ 3 - Upsell
+ 4 - Confirmation
+ 5 - Prelander
+
 
 ##Full example of implementation
 
@@ -295,6 +312,19 @@ $required = json_decode($requiredJson);
     </body>
 </html>
 ```
+
+- In order to insert the fireAffiliatePixel code, just be sure to check for the pageId at the begining of every page:
+
+```
+<script>
+var indexSettings = <?php echo $settings; ?>;
+var indexShowEl = <?php echo $requiredJson; ?>;
+var downSell = indexSettings.Result.downSell;// redirect
+var pageId = 1;
+</script>
+```
+
+with this pageId variable the template by itself is going to get the pixel code and add it to the page.
 
 
 ##Additional Notes

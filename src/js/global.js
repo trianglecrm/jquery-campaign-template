@@ -196,7 +196,7 @@ var ccModule = (function (gf) {
                     else{
                         if(response.Info == 'Test charge. ERROR'){ // testing env, remove on PROD
                             internal = true;
-                            window.location.href = "/"+ccinfo.successRedirect;
+                            window.location.href = "/"+ccinfo.successRedirect+'?successDownSell='+orderSettings.Result.successDownSell;
                         }
                         else{
                             $('#creditCard').val(oldCC);
@@ -246,16 +246,20 @@ var ccModule = (function (gf) {
             });
             $('#paymentMethod').on('change', function() {
                 type = this.value;
-                if(type == 1){
-                    $('#creditCard').attr('pattern','[0-9]{4} *[0-9]{6} *[0-9]{5}');
+                    if(type == 1){
+                    $('#creditCard').attr('pattern','{15}');
                     $('#creditCard').attr('maxlength','15');
+                    $("#creditCard").mask("9999-999999-99999");
                     $('#cvv').attr('pattern','[0-9]{4}');
+                    $("#cvv").mask("9999");
                     $('#cvv').attr('maxlength','4');
                 }
                 else{
-                    $('#creditCard').attr('pattern','[0-9]{13,16}');
+                    $('#creditCard').attr('pattern','{13,16}');
                     $('#creditCard').attr('maxlength','16');
+                    $("#creditCard").mask("9999-9999-9999-9999");
                     $('#cvv').attr('pattern','[0-9]{3}');
+                    $("#cvv").mask("999");
                     $('#cvv').attr('maxlength','3');
                 }
             });

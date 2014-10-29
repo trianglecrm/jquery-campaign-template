@@ -9,6 +9,10 @@
 		<link rel="shortcut icon" href="favicon.ico" />
 	</head>
 	<body>
+            <script>
+                var downSell = getUrlVars()['successDownSell'];
+                var pageId = 3;
+            </script>
 		<div class="wrapper">
 			<?php include_once('templates/headers/header.html'); ?>
                         <?php include_once('templates/contents/step2-success.php'); ?>
